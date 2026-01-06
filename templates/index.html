@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AWS Guestbook</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .message-box { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+        .time { color: #888; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <h1>✍️ AWS Guestbook di Giuseppe</h1>
+    
+    <form method="POST">
+        <input type="text" name="name" placeholder="Il tuo nome" required><br><br>
+        <textarea name="message" placeholder="Lascia un messaggio..." required rows="4" style="width: 100%"></textarea><br><br>
+        <button type="submit">Firma il Guestbook</button>
+    </form>
+
+    <h2>Messaggi Recenti:</h2>
+    {% for msg in messages %}
+    <div class="message-box">
+        <strong>{{ msg.name }}</strong> ha scritto:
+        <p>{{ msg.message }}</p>
+        <div class="time">{{ msg.timestamp }}</div>
+    </div>
+    {% endfor %}
+</body>
+</html>
